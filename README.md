@@ -1,2 +1,2 @@
-# idu_NodeFinal
+# 인덕대 23년 IT기술실무
 IT기술실무 기말고사
