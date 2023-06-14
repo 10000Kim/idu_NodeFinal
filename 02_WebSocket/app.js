@@ -39,10 +39,10 @@ io.on("connection", (socket) => {
     // 채팅 메시지 이벤트 처리
     socket.on("chatting", (data) => {
       const { name, msg } = data;
-      io.emit("chatting", {
+      io.emit("chatting", {   // 모든 클라이언트에게 채팅 메시지와 시간 정보를 전송합니다.
         name,
         msg,
-        time: moment(new Date()).format("h:ss A"),
+        time: moment(new Date()).format("h:ss A"), // 현재 시간을 포맷에 맞게 변환합니다.
       })
     })
   })
@@ -59,5 +59,5 @@ io.on("connection", (socket) => {
 //     })
 // })
 
-
+// 서버 시작
 server.listen(PORT, () => console.log(`server is running ${PORT}`))
