@@ -13,30 +13,30 @@ const rl = readline.createInterface({
   
   // 가위바위보 게임
   function playRockPaperScissors() {
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ['바위', '보', '가위'];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
   
-    rl.question('Choose your move (rock, paper, scissors): ', (userChoice) => {
+    rl.question('선택해주세요! (가위, 바위, 보): ', (userChoice) => {
       userChoice = userChoice.toLowerCase();
   
       if (!choices.includes(userChoice)) {
-        console.log('Invalid choice. Please choose rock, paper, or scissors.');
+        console.log(chalk.red('다시 선택해주세요!! (가위, 바위, 보)'));
         playRockPaperScissors();
         return;
       }
   
-      console.log(`Computer chooses: ${computerChoice}`);
+      console.log(`컴퓨터: ${computerChoice}`);
   
       if (userChoice === computerChoice) {
-        console.log(chalk.yellow('It\'s a tie!'));
+        console.log(chalk.yellow('비겼습니다. 다시 도전해보세요!'));
       } else if (
-        (userChoice === 'rock' && computerChoice === 'scissors') ||
-        (userChoice === 'paper' && computerChoice === 'rock') ||
-        (userChoice === 'scissors' && computerChoice === 'paper')
+        (userChoice === '바위' && computerChoice === '가위') ||
+        (userChoice === '보' && computerChoice === '바위') ||
+        (userChoice === '가위' && computerChoice === '보')
       ) {
-        console.log(chalk.green('Congratulations! You win!'));
+        console.log(chalk.green('승리했습니다! 축하합니다! '));
       } else {
-        console.log(chalk.red('You lose! Try again!'));
+        console.log(chalk.red('패배했습니다. 다시 도전해보세요! '));
       }
   
       rl.close();
@@ -53,11 +53,11 @@ const rl = readline.createInterface({
     }
   
     function makeGuess() {
-      rl.question('Enter your guess (between 1 and 100): ', (input) => {
+      rl.question('생각한 숫자를 입력해보세요! (1~100사이): ', (input) => {
         const guess = parseInt(input, 10);
   
         if (isNaN(guess) || guess < 1 || guess > 100) {
-          console.log('Invalid guess. Please enter a valid number.');
+          console.log(chalk.green('유효한 숫자를 입력해주세요!(1~100사이)'));
           makeGuess();
           return;
         }
@@ -65,20 +65,20 @@ const rl = readline.createInterface({
         attempts++;
   
         if (guess === secretNumber) {
-          console.log(chalk.green(`Congratulations! You guessed the secret number ${secretNumber} correctly in ${attempts} attempts.`));
+          console.log(chalk.yellow(`정답 !! 축하합니다. 정답숫자인 ${secretNumber} 를 ${attempts}번 시도해서 맞췄습니다! `));
           rl.close();
         } else if (guess < secretNumber) {
-          console.log(chalk.yellow('Too low! Try a higher number.'));
+          console.log(chalk.blue('너무 낮아요 더 큰 숫자를 입력해주세요!'));
           makeGuess();
         } else {
-          console.log(chalk.yellow('Too high! Try a lower number.'));
+          console.log(chalk.red('너무 높아요 낮은 숫자를 입력해주세요!'));
           makeGuess();
         }
       });
     }
   
-    console.log('Welcome to the Number Guessing Game!');
-    console.log('Guess a number between 1 and 100.');
+    console.log(chalk.blue('숫자 맞추기 게임에 오신 것을 환영합니다 !! '));
+    console.log('1부터 100 사이의 숫자를 입력해주세요!');
   
     makeGuess();
   }
@@ -96,16 +96,34 @@ const rl = readline.createInterface({
           whitespaceBreak: true,
         })
       );
-    console.log(figlet.textSync('1. Rock, Paper, Scissors'));
+    console.log(figlet.textSync('1. Rock,Scissors, Paper'));
     console.log(figlet.textSync('2. Number Guessing'));
     console.log(figlet.textSync('3. Quit'));
   
     rl.question('Select a game (enter the number): ', (choice) => {
       if (choice === '1') {
-        console.log('\n=== Rock, Paper, Scissors ===');
+        // console.log('\n=== Rock, Paper, Scissors ===');
+        console.log(
+          figlet.textSync("Rock! Scissors! Paper!", {
+            font: "Slant",
+            horizontalLayout: "default",
+            verticalLayout: "default",
+            width: 80,
+            whitespaceBreak: true,
+          })
+        );
         playRockPaperScissors();
       } else if (choice === '2') {
-        console.log(figlet.textSync('\n Number Guessing Game'));
+        // console.log(figlet.textSync('\n Number Guessing Game'));
+        console.log(
+          figlet.textSync("Number Guessing Game", {
+            font: "Slant",
+            horizontalLayout: "default",
+            verticalLayout: "default",
+            width: 80,
+            whitespaceBreak: true,
+          })
+        );
         playNumberGuessingGame();
       } else if (choice === '3') {
         //console.log('Goodbye!');
@@ -120,7 +138,7 @@ const rl = readline.createInterface({
           );
         rl.close();
       } else {
-        console.log('Invalid choice. Please select a valid option.');
+        console.log('유효하지 않은 선택입니다. (1,2,3 중 선택해주세요)');
         selectGame();
       }
     });
