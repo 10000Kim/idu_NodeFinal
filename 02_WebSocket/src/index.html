@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet"href="css/style.css">
+</head>
+<body>
+
+    <div class = "wrapper">
+
+        <div class = "user-container">
+            <label for ="nickname">대화명:</label>
+            <input type="text" id = "nickname" placeholder="입력해주세요.">
+           
+            
+        </div>
+        <hr>
+        <div class = "display-container">
+            <ul class="chatting-list">
+                <div class="user-count">현재 접속자 수: <span id="userCount">0</span></div>
+            <div id="userTypingMessage"></div>
+            </ul>
+        </div>
+        <hr>
+        <div class = "input-container">
+            
+            <span>
+                <input type= "text" class="chatting-input" placeholder="채팅을 입력해주세요">
+                <button class = "send-button">전송</button>
+            </span>
+            
+        </div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chat.js"></script>  
+    
+</body>
+</html>
