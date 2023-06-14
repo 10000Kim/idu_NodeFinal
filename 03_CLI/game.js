@@ -57,7 +57,7 @@ const rl = readline.createInterface({
         const guess = parseInt(input, 10);
   
         if (isNaN(guess) || guess < 1 || guess > 100) {
-          console.log(chalk.green('유효한 숫자를 입력해주세요!(1~100사이)'));
+          console.log(chalk.bold.green('유효한 숫자를 입력해주세요!(1~100사이)'));
           makeGuess();
           return;
         }
@@ -65,20 +65,20 @@ const rl = readline.createInterface({
         attempts++;
   
         if (guess === secretNumber) {
-          console.log(chalk.yellow(`정답 !! 축하합니다. 정답숫자인 ${secretNumber} 를 ${attempts}번 시도해서 맞췄습니다! `));
+          console.log(chalk.bold.yellow(`정답 !! 축하합니다. 정답숫자인 ${secretNumber} 를 ${attempts}번 시도해서 맞췄습니다! `));
           rl.close();
         } else if (guess < secretNumber) {
-          console.log(chalk.blue('너무 낮아요 더 큰 숫자를 입력해주세요!'));
+          console.log(chalk.bold.blue('너무 낮아요 더 큰 숫자를 입력해주세요!'));
           makeGuess();
         } else {
-          console.log(chalk.red('너무 높아요 낮은 숫자를 입력해주세요!'));
+          console.log(chalk.bold.red('너무 높아요 낮은 숫자를 입력해주세요!'));
           makeGuess();
         }
       });
     }
   
-    console.log(chalk.blue('숫자 맞추기 게임에 오신 것을 환영합니다 !! '));
-    console.log('1부터 100 사이의 숫자를 입력해주세요!');
+    console.log(chalk.bold.blue('숫자 맞추기 게임에 오신 것을 환영합니다 !! '));
+    console.log(chalk.bold('1부터 100 사이의 숫자를 입력해주세요!'));
   
     makeGuess();
   }
@@ -138,7 +138,7 @@ const rl = readline.createInterface({
           );
         rl.close();
       } else {
-        console.log('유효하지 않은 선택입니다. (1,2,3 중 선택해주세요)');
+        console.log(chalk.bold.yellow('유효하지 않은 선택입니다. (1,2,3 중 선택해주세요)'));
         selectGame();
       }
     });
