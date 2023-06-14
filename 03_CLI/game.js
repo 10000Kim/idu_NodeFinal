@@ -100,7 +100,7 @@ const rl = readline.createInterface({
     console.log(figlet.textSync('2. Number Guessing'));
     console.log(figlet.textSync('3. Quit'));
   
-    rl.question('Select a game (enter the number): ', (choice) => {
+    rl.question('게임을 선택해주세요(1~3 Enter눌러주세요) ', (choice) => {
       if (choice === '1') {
         // console.log('\n=== Rock, Paper, Scissors ===');
         console.log(
@@ -145,5 +145,14 @@ const rl = readline.createInterface({
   }
   
   // 게임 시작
-  console.log('Welcome to the CLI Games!');
+  // console.log('Welcome to the CLI Games!');
+  console.log(
+    figlet.textSync("Welcome to the CLI Games!", {
+      font: "Slant",
+      horizontalLayout: "default",
+      verticalLayout: "default",
+      width: 80,
+      whitespaceBreak: true,
+    })
+  );
   selectGame();
