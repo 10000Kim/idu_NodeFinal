@@ -35,11 +35,11 @@ async function convertCurrency(amount, rates) {
 }
 
 async function saveToFile(data) {
-  fs.writeFile('result.txt', data.join('\n'), (err) => {
+  fs.writeFile('exchange_result.txt', data.join('\n'), (err) => {
     if (err) {
       console.error(chalk.bold('파일 저장 중 오류가 발생했습니다.'));
     } else {
-      console.log(chalk.bgBlue.bold('결과가 result.txt 파일에 저장되었습니다.'));
+      console.log(chalk.bgBlue.bold('결과가 exchange_result.txt 파일에 저장되었습니다.'));
     }
   });
 }
