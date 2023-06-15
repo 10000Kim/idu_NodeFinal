@@ -2,6 +2,7 @@ const axios = require('axios');       // HTTP 요청을 보내기 위한 패키�
 const readline = require('readline'); // 사용자 입력을 받기 위한 패키지
 const chalk = require('chalk')        // 콘솔 출력 스타일링을 위한 패키지
 const fs = require('fs');             // 파일 시스템 접근을 위한 패키지
+const figlet = require("figlet");     // 콘솔 출력 스타일링을 위한 패키지
 
 const API_URL = 'https://api.exchangerate-api.com/v4/latest/KRW';
 
@@ -13,6 +14,15 @@ function getExchangeRates() {
       process.exit(1);
     });
 }
+
+console.log(
+  figlet.textSync("KRW Exchange", {
+    font: "Dancing Font",
+    horizontalLayout: "default",
+    verticalLayout: "default",
+    width: 80,
+    whitespaceBreak: true,
+  }))
 
 async function convertCurrency(amount, rates) {
   const result = [];
