@@ -20,7 +20,7 @@ const rl = readline.createInterface({
       userChoice = userChoice.toLowerCase();
   
       if (!choices.includes(userChoice)) {
-        console.log(chalk.red('다시 선택해주세요!! (가위, 바위, 보)'));
+        console.log(chalk.red.bold('다시 선택해주세요!! (가위, 바위, 보)'));
         playRockPaperScissors();
         return;
       }
@@ -28,15 +28,15 @@ const rl = readline.createInterface({
       console.log(`컴퓨터: ${computerChoice}`);
   
       if (userChoice === computerChoice) {
-        console.log(chalk.yellow('비겼습니다. 다시 도전해보세요!'));
+        console.log(chalk.yellow.bold('비겼습니다. 다시 도전해보세요!'));
       } else if (
         (userChoice === '바위' && computerChoice === '가위') ||
         (userChoice === '보' && computerChoice === '바위') ||
         (userChoice === '가위' && computerChoice === '보')
       ) {
-        console.log(chalk.green('승리했습니다! 축하합니다! '));
+        console.log(chalk.green.bold('승리했습니다! 축하합니다! '));
       } else {
-        console.log(chalk.red('패배했습니다. 다시 도전해보세요! '));
+        console.log(chalk.red.bold('패배했습니다. 다시 도전해보세요! '));
       }
   
       rl.close();
