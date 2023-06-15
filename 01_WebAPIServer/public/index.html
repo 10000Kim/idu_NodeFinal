@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>축구 선수 목록</title>
+  </head>
+  <body>
+    <h1>선수 목록</h1>
+    <ul id="player-list"></ul>
+
+    <script>
+      fetch('/api/players')
+        .then(response => response.json())
+        .then(data => {
+          const playerList = document.getElementById('player-list');
+          data.forEach(player => {
+            const listItem = document.createElement('li');
+            listItem.innerText = `${player.name} (${player.position})`;
+            playerList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error(error));
+    </script>
+  </body>
+</html>
